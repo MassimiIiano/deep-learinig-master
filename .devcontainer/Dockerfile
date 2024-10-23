@@ -7,4 +7,8 @@ RUN apt-get update && \
     pip install --upgrade pip
 
 # Install Basic Packages
-RUN pip install ipykernel jupyter
+RUN pip install ipykernel jupyter numpy opencv-pythonimport numpy as np
+import cv2
+
+print("NumPy version:", np.__version__)
+print("OpenCV version:", cv2.__version__)
