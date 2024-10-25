@@ -1,27 +1,39 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
 {
-	"name": "devcontainr_python3",
-	//"dockerFile": "Dockerfile",
-	"dockerComposeFile": "compose.yaml",
-	"service": "jupyter",
-	"workspaceFolder": "/workspace",
-	"shutdownAction": "stopCompose",
-	"forwardPorts": [8888],
+	"name": "deep-learining",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
+		"ghcr.io/devcontainers/features/python:1": {
+			"installTools": true,
+			"installJupyterlab": true,
+			"version": "3.12"
+		},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "neofetch"
+		},
 		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/github-cli:1": {}
 	},
 	"customizations": {
 		"vscode": {
 			"extensions": [
 				"ms-python.python",
-				"ms-python.vscode-pylance",
+				"ms-python.python",
 				"ms-toolsai.jupyter",
 				"ms-toolsai.datawrangler",
 				"ms-azuretools.vscode-docker"
-			],
-			"settings": {
-				"python.defaultInterpreterPath": "/usr/local/bin/python3"
-            }
+			]
 		}
-	}
+	},
+	
+	"postCreateCommand": "python3 -m pip install --upgrade pip && python3 -m pip install -r requirements.txt && neofetch"
+	
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
 }
