@@ -4,3 +4,4 @@ matplotlib
 scikit-image
 python-mnist
 pandas
+tensorflow

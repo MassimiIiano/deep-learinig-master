@@ -1,2 +1,6 @@
+# mas data
 *.zip
 *.gz
+
+# python
+__pycache__
